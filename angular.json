@@ -28,7 +28,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "node_modules/font-awesome/scss/font-awesome.scss",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },
@@ -123,6 +126,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "MedicareCmsAngular"
+    }
+  },
+  "defaultProject": "MedicareCmsAngular",
+  "cli": {
+    "analytics": "5736f7f0-6881-4b63-98ae-aaa9010aeec2"
+  }
 }
