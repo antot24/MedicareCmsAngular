@@ -7,3 +7,54 @@
     background-color:rgb(8, 184, 143);
     
 }
+
+
+// toaster
+
+/* Custom Toastr Notification */
+.custom-toast {
+    background-color: #e42bbc; /* Change background color */
+    color: white;
+    border-radius: 8px;
+    padding: 24px; /* Increase padding for a larger notification box */
+    font-size: 16px; /* Increase font size */
+    width: 400px; /* Increase width */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+    animation: fadeInSlide 0.6s ease-out; /* Apply custom animation */
+  }
+  
+  /* Customize the progress bar color */
+  .custom-toast .toast-progress {
+    background-color: #FFC107;
+    height: 6px; /* Increase progress bar height */
+  }
+  
+  /* Customize the close button color */
+  .custom-toast .toast-close-button {
+    color: rgb(13, 12, 12);
+  }
+  
+  /* Keyframes for custom fade-in and slide animation */
+  @keyframes fadeInSlide {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px); /* Start from slightly above */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); /* End at the original position */
+    }
+  }
+  
+
+  //labresult table head design
+  .lab-result-heading {
+    text-align: center;
+    background-color: #4CAF50; /* Set the background color */
+    color: white;              /* Text color */
+    font-weight: bold;         /* Bold text */
+    font-size: 18px;           /* Increase font size */
+    text-transform: uppercase; /* Make text uppercase */
+    padding: 12px;
+  }
+  
