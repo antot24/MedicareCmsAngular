@@ -1,0 +1,71 @@
+/* Container styling */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+h3 {
+    color: #2a7d2b; /* Green color for headers */
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form elements */
+.form-group label {
+    color: #2a7d2b; /* Green color for labels */
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="number"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    border: 1px solid #c3e6cb; /* Light green border for input fields */
+    border-radius: 4px;
+    padding: 10px;
+    color: #2a7d2b; /* Green text */
+}
+
+.form-control:focus {
+    border-color: #28a745; /* Green color on focus */
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.3); /* Green glow on focus */
+}
+
+/* Button styling */
+.btn-primary {
+    background-color: #28a745; /* Green background for button */
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Validation errors */
+.validation-error {
+    color: #dc3545; /* Red color for validation errors */
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+/* Invalid fields styling */
+.is-invalid {
+    border-color: #dc3545 !important; /* Red border for invalid fields */
+    background-color: #f8d7da; /* Light red background for invalid fields */
+}
+
+.is-invalid:focus {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 8px rgba(220, 53, 69, 0.3); /* Red glow on focus for invalid fields */
+}

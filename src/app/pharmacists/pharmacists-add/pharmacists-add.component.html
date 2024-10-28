@@ -1,0 +1,146 @@
+<div class="container">
+    <h3>Add New Medicine</h3>
+    <hr>
+    <!--Template Driven Form-->
+    <form name="frmMedicine" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+
+        <!-- MedicineId : hidden-->
+        <div class="form-group">
+            <input type="text" readonly name="MedicineId" [(ngModel)]="pharmacistService.medicineInfo.MedicineId" class="form-control">
+        </div>
+
+        <!--Medicine Name-->
+        <div class="form-group">
+            <label>Medicine Name</label>
+            <input type="text" name="MedicineName" #MedicineName="ngModel" class="form-control"
+                [(ngModel)]="pharmacistService.medicineInfo.MedicineName" placeholder="Enter Medicine Name" minlength="3"
+                maxlength="25" required [ngClass]="{'is-invalid': MedicineName.touched && MedicineName.invalid}" />
+
+            <!--Validation Message-->
+            <div class="validation-error" *ngIf="MedicineName.touched && MedicineName.invalid">
+                <div *ngIf="MedicineName.errors.required">
+                    Medicine Name is invalid or required!
+                </div>
+            </div>
+        </div>
+
+        <!--Generic Name-->
+        <div class="form-group">
+            <label>Generic Name</label>
+            <input type="text" name="GenericName" #GenericName="ngModel" class="form-control"
+                [(ngModel)]="pharmacistService.medicineInfo.GenericName" placeholder="Enter Generic Name" minlength="3"
+                maxlength="25" required [ngClass]="{'is-invalid': GenericName.touched && GenericName.invalid}" />
+
+            <!--Validation Message-->
+            <div class="validation-error" *ngIf="GenericName.touched && GenericName.invalid">
+                <div *ngIf="GenericName.errors.required">
+                    Generic Name is invalid or required!
+                </div>
+            </div>
+        </div>
+
+        <!--Manufacturing Date-->
+        <div class="form-group">
+            <label>Manufacturing Date</label>
+            <input type="date" name="ManufacturingDate" #ManufacturingDate="ngModel" class="form-control"
+                [(ngModel)]="pharmacistService.medicineInfo.ManufacturingDate" required
+                [ngClass]="{'is-invalid': ManufacturingDate.touched && ManufacturingDate.invalid}" />
+
+            <!--Validation Message-->
+            <div class="validation-error" *ngIf="ManufacturingDate.touched && ManufacturingDate.invalid">
+                <div *ngIf="ManufacturingDate.errors.required">
+                    Manufacturing date is invalid or required!
+                </div>
+            </div>
+        </div>
+
+        <!-- Expiry Date -->
+        <div class="form-group">
+            <label>Expiry Date</label>
+            <input type="date" name="ExpiryDate" #ExpiryDate="ngModel" class="form-control"
+                [(ngModel)]="pharmacistService.medicineInfo.ExpiryDate" required
+                [ngClass]="{'is-invalid': ExpiryDate.touched && ExpiryDate.invalid}" />
+
+            <!-- Validation Message -->
+            <div class="validation-error" *ngIf="ExpiryDate.touched && ExpiryDate.invalid">
+                <div *ngIf="ExpiryDate.errors?.required">
+                    Expiry date is required!
+                </div>
+                <div *ngIf="ExpiryDate.errors?.futureDate">
+                    Expiry date cannot be a past date!
+                </div>
+            </div>
+        </div>
+
+        <!-- Category -->
+        <div class="form-group">
+            <label>Category</label>
+            <input type="text" name="Category" #Category="ngModel" class="form-control"
+                [(ngModel)]="pharmacistService.medicineInfo.Category" placeholder="Enter Category" minlength="3"
+                maxlength="25" required [ngClass]="{'is-invalid': Category.touched && Category.invalid}" />
+
+            <!-- Validation Message -->
+            <div class="validation-error" *ngIf="Category.touched && Category.invalid">
+                <div *ngIf="Category.errors?.required">
+                    Category is required!
+                </div>
+                <div *ngIf="Category.errors?.minlength">
+                    Category must be at least 3 characters long!
+                </div>
+                <div *ngIf="Category.errors?.maxlength">
+                    Category cannot exceed 25 characters!
+                </div>
+            </div>
+        </div>
+
+        <!-- Quantity -->
+        <div class="form-group">
+            <label>Quantity</label>
+            <input type="number" name="Quantity" #Quantity="ngModel" class="form-control"
+                [(ngModel)]="pharmacistService.medicineInfo.Quantity" placeholder="Enter Quantity" required 
+                min="1" 
+                [ngClass]="{'is-invalid': Quantity.touched && Quantity.invalid}" />
+
+            <!-- Validation Message -->
+            <div class="validation-error" *ngIf="Quantity.touched && Quantity.invalid">
+                <div *ngIf="Quantity.errors?.required">
+                    Quantity is required!
+                </div>
+                <div *ngIf="Quantity.errors?.min">
+                    Quantity must be at least 1!
+                </div>
+                <div *ngIf="Quantity.errors?.pattern">
+                    Quantity must be a valid positive number!
+                </div>
+            </div>
+        </div>
+
+        <!-- Price Per Unit -->
+        <div class="form-group">
+            <label>Price Per Unit</label>
+            <input type="number" name="PricePerUnit" #PricePerUnit="ngModel" class="form-control"
+                [(ngModel)]="pharmacistService.medicineInfo.PricePerUnit" placeholder="Enter Price Per Unit" required 
+                min="0" step="0.01" 
+                [ngClass]="{'is-invalid': PricePerUnit.touched && PricePerUnit.invalid}" />
+
+            <!-- Validation Message -->
+            <div class="validation-error" *ngIf="PricePerUnit.touched && PricePerUnit.invalid">
+                <div *ngIf="PricePerUnit.errors?.required">
+                    Price per unit is required!
+                </div>
+                <div *ngIf="PricePerUnit.errors?.min">
+                    Price per unit must be a positive number!
+                </div>
+                <div *ngIf="PricePerUnit.errors?.pattern">
+                    Price per unit must be a valid decimal number!
+                </div>
+            </div>
+        </div>
+
+        <!--Submit-->
+        <div class="form-group">
+            <button type="submit" class="btn btn-lg btn-primary form-control"
+                [disabled]="!(form.valid && form.dirty)">INSERT</button>
+        </div>
+    </form>
+</div>

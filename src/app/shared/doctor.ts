@@ -1,3 +1,4 @@
+
 import { Specialization } from './specialization';
 import{Staff} from './staff'
 export class Doctor {
@@ -9,3 +10,4 @@ export class Doctor {
     Staff:Staff =new Staff();
     Specialization:Specialization = new Specialization();
 }
+

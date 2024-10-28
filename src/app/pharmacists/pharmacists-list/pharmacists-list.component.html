@@ -1,0 +1,65 @@
+<app-pharmacistnavbar></app-pharmacistnavbar>
+<br>
+<div class="container">
+    <div class="header">
+        <div class="row">
+            <!-- Search medicine -->
+            <div class="col-sm-8">
+                <input type="search" class="form-control custom-margin-search"
+                       placeholder="Search Medicine here" [(ngModel)]="searchTerm"
+                       (input)="filterMedicines()">
+                <br>
+            </div>
+
+            <!-- Add Medicine and Prescriptions buttons -->
+            <div class="col-sm-4">
+                <a [routerLink]="['/pharmacist/add']" role="button" class="btn btn-outline-primary custom-margin-add">
+                    <i class="fa fa-plus fa-lg"></i>&nbsp;Add Medicine
+                </a>
+                &nbsp; <!-- Space between buttons -->
+                <a [routerLink]="['/pharmacist/prescriptionList']" role="button" class="btn btn-outline-secondary-custom custom-margin-add">
+                    <i class="fa fa-file-alt fa-lg"></i>&nbsp;Prescriptions
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- List Medicines -->
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Medicine ID</th>
+                <th>Medicine Name</th>
+                <th>Generic Name</th>
+                <th>Manufacturing Date</th>
+                <th>Expiry Date</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Price Per Unit</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let medicine of filteredMedicines | paginate: { itemsPerPage: 5, currentPage: page }">
+                <td>{{medicine.MedicineId}}</td>
+                <td>{{medicine.MedicineName}}</td>
+                <td>{{medicine.GenericName}}</td>
+                <td>{{medicine.ManufacturingDate | date: 'yyyy-MM-dd'}}</td>
+                <td>{{medicine.ExpiryDate | date: 'yyyy-MM-dd'}}</td>
+                <td>{{medicine.Category}}</td>
+                <td>{{medicine.Quantity}}</td>
+                <td>{{medicine.PricePerUnit | currency:'INR'}}</td>
+                <td>
+                    <button type="button" class="btn btn-sm btn-outline-info" [routerLink]="['/pharmacist/update/:id', medicine]">
+                        <i class="fa fa-edit"></i>&nbsp;Update Medicine
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Footer -->
+    <div class="footer">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+</div>
