@@ -1,0 +1,49 @@
+<!-- <p>appointment-test works!</p> -->
+
+<div class="container mt-5">
+  <h2 class="text-center">Test Prescriptions</h2>
+    
+    <!-- Test Prescription Form -->
+    <form #testForm="ngForm" (ngSubmit)="onSubmit(testForm)">
+      
+      <!-- Appointment ID (Read-Only) -->
+      <div class="form-group">
+        <label hidden for="appointmentId">Appointment ID</label>
+        <input hidden type="text" readonly class="form-control" id="appointmentId" name="appointmentId" [(ngModel)]="doctorService.testprecription.AppointmentId" >
+      </div>
+  
+      <!-- Test Name -->
+      <div class="form-group">
+        <label>Test Name:</label>
+        <select name="TestId" id="TestId" #TestId="ngModel" class="form-control"
+            [(ngModel)]="doctorService.testprecription.TestId" required>
+            <option value="0">---Select Test---</option>
+            <option *ngFor="let test of doctorService.testinfos" 
+            [value]="test.TestId">{{test.TestName}}   ({{test.TestType}})</option>
+        </select>
+      </div>
+  
+      <!-- Test Done Status -->
+      <!-- <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="testDoneStatus" name="testDoneStatus" [(ngModel)]="doctorService.testprecription.TestDoneStatus">
+        <label class="form-check-label" for="testDoneStatus">Test Done Status</label>
+      </div> -->
+  
+      <!-- Test Report -->
+      <!-- <div class="form-group">
+        <label for="testReport">Test Report</label>
+        <textarea class="form-control" id="testReport" name="testReport" [(ngModel)]="doctorService.testprecription.TestReport" rows="3"></textarea>
+      </div> -->
+  
+      <!-- Test Value -->
+      <!-- <div class="form-group">
+        <label for="testValue">Test Value</label>
+        <input type="text" class="form-control" id="testValue" name="testValue" [(ngModel)]="doctorService.testprecription.TestValue" required>
+      </div> -->
+  
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-dark">Add Test</button>
+  
+    </form>
+  </div>
+

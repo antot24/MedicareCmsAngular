@@ -1,0 +1,37 @@
+<!-- <p>testprescription-list works!</p> -->
+
+<div class="container mt-3">
+    <!-- <h2 class="text-center">Test Prescriptions</h2> -->
+    
+    <!-- Display message if there are no prescriptions -->
+    <div *ngIf="!doctorService.testprescriptionslist.length" class="alert alert-warning text-center">
+      No test prescriptions found.
+    </div>
+  
+    <!-- Table to display test prescriptions -->
+    <table *ngIf="doctorService.testprescriptionslist.length" class="table table-striped table-bordered mt-3">
+      <thead class="thead-dark">
+        <tr>
+          <th class="text-center">No</th>
+          <th class="text-center">Test Name</th>
+          <!-- <th>Test Type</th>
+          <th>Category</th> -->
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prescription of doctorService.testprescriptionslist; let i = index">
+          <td class="text-center">{{ i + 1 }}</td>
+          <td class="text-center">{{ prescription.TestName }}</td>
+          <!-- <td>{{ prescription.TestType }}</td>
+          <td>{{ prescription.Category }}</td> -->
+          <td class="text-center">
+            <button class="btn btn-info btn-sm mx-auto" style="width: 100px;" (click)="deleteTestPrescription(prescription.TestPrescriptionId)">
+              Remove
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
