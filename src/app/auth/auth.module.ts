@@ -7,7 +7,7 @@ import { AdminnavbarComponent } from './adminnavbar/adminnavbar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ReceptionistnavbarComponent } from './receptionistnavbar/receptionistnavbar.component';
 import { DoctornavbarComponent } from './doctornavbar/doctornavbar.component';
-import { PharmacistnavbarComponent } from './pharmacistnavbar/pharmacistnavbar.component';
+import { PharmacistnavbarComponent } from '../pharmacists/pharmacistnavbar/pharmacistnavbar.component';
 import { LabtechniciannavbarComponent } from './labtechniciannavbar/labtechniciannavbar.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -25,8 +25,9 @@ import { FormsModule } from '@angular/forms';
 import { TodaysappointmentsModule } from '../todaysappointments/todaysappointments.module';
 
 
+
 @NgModule({
-  declarations: [AuthComponent, AdminnavbarComponent, NavbarComponent, ReceptionistnavbarComponent, DoctornavbarComponent, PharmacistnavbarComponent, LabtechniciannavbarComponent, HomeComponent, LoginComponent, AdminComponent, ReceptionistComponent, DoctorComponent, PharmacistComponent, LabtechnicianComponent, PagenotfoundComponent],
+  declarations: [AuthComponent, AdminnavbarComponent, NavbarComponent, ReceptionistnavbarComponent, DoctornavbarComponent, LabtechniciannavbarComponent, HomeComponent, LoginComponent, AdminComponent, ReceptionistComponent, DoctorComponent, PharmacistComponent, LabtechnicianComponent, PagenotfoundComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
@@ -36,5 +37,6 @@ import { TodaysappointmentsModule } from '../todaysappointments/todaysappointmen
     FormsModule,
     TodaysappointmentsModule
   ]
+
 })
 export class AuthModule { }

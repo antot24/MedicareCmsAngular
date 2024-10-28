@@ -1,0 +1,48 @@
+.prescription-list-container {
+    padding: 20px;
+    background-color: #f0f8f5; /* Light green background */
+    border-radius: 8px;
+}
+
+.page-heading {
+    color: #2f855a; /* Dark green color for the heading */
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.header .row {
+    margin-bottom: 20px;
+}
+
+.custom-margin-search {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #c6f6d5; /* Light green header */
+        color: #2f855a;
+        font-weight: bold;
+    }
+
+    td {
+        background-color: #f0f8f5;
+    }
+}
+
+.footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}

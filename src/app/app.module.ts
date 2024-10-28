@@ -9,20 +9,28 @@ import { ToastrModule } from 'ngx-toastr'; //imported file
 import { FormsModule } from '@angular/forms';
 import { AuthGuard } from './auth/auth.guard';
 import{CmsInterceptor} from 'src/app/auth/cms.interceptor';
+
+import { AuthModule } from './auth/auth.module';
+
+import { LabAddComponent } from './labtechnician/lab-add/lab-add.component';
+
 import { Ng2SearchPipeModule } from 'ng2-search-filter';  
 import { NgxPaginationModule } from 'ngx-pagination';
 
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+   
+    LabAddComponent
 
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule, // required animations module
+     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
     AppRoutingModule,
     Ng2SearchPipeModule,
