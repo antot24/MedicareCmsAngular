@@ -36,10 +36,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
+
 // import { LabtechnicianComponent } from './labtechncian/labtechncian.component';
+
+import { TodaysappointmentsComponent } from './todaysappointments/todaysappointments.component';
+
+
 const routes: Routes = [
   // Redirect empty path to 'auth/login'
   { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
+
 
   // Lazy load the 'auth' module
   {
@@ -48,6 +54,19 @@ const routes: Routes = [
       import('./auth/auth.module')
         .then(m => m.AuthModule)
   },
+
+
+// Todays Appointment Module
+{
+  path: 'appointments',component:TodaysappointmentsComponent,
+  loadChildren: () =>
+    import('./todaysappointments/todaysappointments.module')
+      .then(x => x.TodaysappointmentsModule)
+},
+
+
+//You can add other Parent components below, like above   -- lazy loading for best performance
+
 
   // Lazy load the 'pharmacist' (Pharmacists) module
   {

@@ -19,6 +19,11 @@ import { LabtechnicianComponent } from './labtechnician/labtechnician.component'
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';  
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FormsModule } from '@angular/forms';
+import { TodaysappointmentsModule } from '../todaysappointments/todaysappointments.module';
+
 
 
 @NgModule({
@@ -26,8 +31,12 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    ReactiveFormsModule
-   ]
-   
+    ReactiveFormsModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+    FormsModule,
+    TodaysappointmentsModule
+  ]
+
 })
 export class AuthModule { }

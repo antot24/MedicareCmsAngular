@@ -1,0 +1,233 @@
+<nav class="navbar navbar-expand-lg navbar-light custom-bg-nav-bar">
+  <div class="container d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center">
+          <a class="navbar-brand" href="#">
+              <!-- <img src="../../assets/hospital.png" alt="logo" width="50"> -->           
+          </a>
+          <h1>DOCTOR PANEL</h1>
+      </div>
+          <div class="collapse navbar-collapse" id="navbarNav">
+           <ul class="navbar-nav ml-auto"></ul>
+           <!-- <span class="nav-link">Hi, {{user}}</span> -->
+           <a [routerLink]="['/auth/doctor'] " role="button" class="btn btn-dark custom-margin-add">
+            Home</a>
+       
+          
+    </div>
+      
+    
+  </div>
+  </nav>
+
+<div class="container">
+    <!-- <h2>Consultation</h2> -->
+    <h2 class="text-center">Consultation</h2>
+
+  
+    <h4>Patient's Info</h4>
+    <hr>
+   
+
+    <!-- Template Driven Form -->
+    <form name="frmAppointment" #form="ngForm" autocomplete="off" class="full-width-form">
+      <div class="row">
+     
+        <!-- Patient Name -->
+        <div class="col-md-3 form-group">
+          <label>Patient Name</label>
+          <input type="text" readonly name="PatientName" #PatientName="ngModel" class="form-control"
+            [(ngModel)]="doctorService.appointment.PatientName" minlength="3" maxlength="25" required
+            [ngClass]="{'is-invalid': PatientName.touched && PatientName.invalid}" />
+          <div class="validation-error" *ngIf="PatientName.touched && PatientName.invalid">
+            <div *ngIf="PatientName.errors.required">Patient Name is invalid or required!</div>
+          </div>
+        </div>
+  
+       
+    
+        <!-- Gender -->
+        <div class="col-md-3 form-group">
+          <label>Gender</label>
+          <input type="text" readonly name="Gender" class="form-control" [(ngModel)]="doctorService.appointment.Gender">
+        </div>
+  
+            <!-- Appointment Id -->
+            <div class="col-md-3 form-group">
+              <label>Appointment Id</label>
+              <input type="text" readonly name="AppointmentId" class="form-control" [(ngModel)]="doctorService.appointment.AppointmentId">
+            </div>
+     
+        
+       
+          <div class="col-md-3 form-group">
+            <label>Token Number</label>
+            <input type="text" readonly name="TokenNumber" class="form-control" [(ngModel)]="doctorService.appointment.TokenNumber">
+          </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-3 form-group">
+          <label>Appointment Date</label>
+          <input type="text" readonly name="AppointmentDate" class="form-control" [(ngModel)]="doctorService.appointment.AppointmentDate">
+        </div>
+
+         <!-- Blood Group -->
+
+         <div class="col-md-3 form-group">
+            <label>Blood Group</label>
+            <input type="text" readonly name="BloodGroup" class="form-control" [(ngModel)]="doctorService.appointment.BloodGroup">
+          </div>
+       
+  
+        <!-- Date Of Birth -->
+        <!-- <div class="col-md-3 form-group">
+          <label>Date Of Birth</label>
+          <input type="date" readonly name="Dob" #Dob="ngModel" class="form-control" [(ngModel)]="doctorService.appointment.Dob"
+            required [ngClass]="{'is-invalid': Dob.touched && Dob.invalid}">
+          <div class="validation-error" *ngIf="Dob.touched && Dob.invalid">
+            <div *ngIf="Dob.errors?.required">Date Of Birth is required!</div>
+            <div *ngIf="Dob.errors?.min">Date Of Birth cannot be before {{ minDate }}!</div>
+            <div *ngIf="Dob.errors?.max">Date Of Birth cannot be a future date!</div>
+          </div>
+        </div>
+   -->
+
+    <!-- Age -->
+    <div class="col-md-3 form-group">
+      <label>Age</label>
+      <input type="text" readonly name="Age" class="form-control" [value]="age">
+    </div>
+
+    
+    <!-- Date Of Birth -->
+    <div class="col-md-3 form-group">
+      <label hidden >Date Of Birth</label>
+      <input hidden type="date" readonly name="Dob" #Dob="ngModel" class="form-control" [(ngModel)]="doctorService.appointment.Dob"
+        required [ngClass]="{'is-invalid': Dob.touched && Dob.invalid}">
+      <div class="validation-error" *ngIf="Dob.touched && Dob.invalid">
+        <div *ngIf="Dob.errors?.required">Date Of Birth is required!</div>
+        <div *ngIf="Dob.errors?.min">Date Of Birth cannot be before {{ minDate }}!</div>
+        <div *ngIf="Dob.errors?.max">Date Of Birth cannot be a future date!</div>
+      </div>
+    </div>
+        
+        <!-- Consultation Status -->
+        <div class="col-md-3 form-group">
+          <div class="form-check">
+            <input hidden type="checkbox" readonly name="ConsultationStatus" #IsActive="ngModel" class="form-check-input"
+              [(ngModel)]="doctorService.appointment.ConsultationStatus" />
+            <label class="form-check-label" hidden>Consultation Status</label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+  <div class="container">
+    <h4>Add Prescription Details</h4>
+
+
+    <!-- <h2>Prescription for Appointment #{{ doctorService.appointment.AppointmentId }}</h2> -->
+
+    <!-- Form for entering prescription details -->
+    <!-- Form for entering prescription details -->
+<form #prescriptionForm="ngForm" (ngSubmit)="onSubmit(prescriptionForm)" novalidate>
+  <div class="form-group">
+      <label for="symptoms">Symptoms:</label>
+      <input 
+          type="text" 
+          class="form-control" 
+          id="symptoms" 
+          [(ngModel)]="doctorService.mainprecription.Symptoms" 
+          name="symptoms" 
+          required 
+          pattern="[A-Za-z\s]*" 
+      />
+      <div *ngIf="prescriptionForm.controls.symptoms?.invalid && (prescriptionForm.controls.symptoms?.touched || prescriptionForm.submitted)">
+          <small class="text-danger" *ngIf="prescriptionForm.controls.symptoms?.errors?.required">Symptoms are required.</small>
+          <small class="text-danger" *ngIf="prescriptionForm.controls.symptoms?.errors?.pattern">Only letters and spaces are allowed.</small>
+      </div>
+  </div>
+
+  <div class="form-group">
+      <label for="diagnosis">Diagnosis:</label>
+      <input 
+          type="text" 
+          class="form-control" 
+          id="diagnosis" 
+          [(ngModel)]="doctorService.mainprecription.Diagnosis" 
+          name="diagnosis" 
+          required 
+      />
+      <div *ngIf="prescriptionForm.controls.diagnosis?.invalid && (prescriptionForm.controls.diagnosis?.touched || prescriptionForm.submitted)">
+          <small class="text-danger" *ngIf="prescriptionForm.controls.diagnosis?.errors?.required">Diagnosis is required.</small>
+      </div>
+  </div>
+
+  <div class="form-group">
+      <label for="doctorsNote">Doctor's Note:</label>
+      <textarea 
+          id="doctorsNote" 
+          class="form-control" 
+          [(ngModel)]="doctorService.mainprecription.DoctorsNote" 
+          name="doctorsNote"
+      ></textarea>
+  </div>
+
+  <div class="form-group">
+      <input 
+          type="text" hidden
+          class="form-control" 
+          id="appointmentId" 
+          [(ngModel)]="doctorService.mainprecription.AppointmentId" 
+          name="appointmentId" 
+          required
+      />
+  </div>
+
+  <button type="submit" class="btn btn-dark" [disabled]="prescriptionForm.invalid">Submit</button>
+</form>
+
+
+<app-appointment-medicine></app-appointment-medicine>
+<app-medicineprescription-list></app-medicineprescription-list>
+
+<app-appointment-test></app-appointment-test>
+
+<app-testprescription-list></app-testprescription-list>
+<app-labresult></app-labresult>
+
+
+  <!-- Add your CSS below -->
+  <style>
+    /* Full width for the form */
+    .full-width-form {
+      max-width: 100%;
+      width: 100%;
+    }
+  
+    /* Form rows and columns */
+    .row {
+      display: flex;
+      justify-content: space-between;
+    }
+  
+    .col-md-3 {
+      flex: 0 0 24%;
+      margin-bottom: 1.5rem;
+    }
+  
+    /* Make all input fields full width */
+    .form-control {
+      width: 100%;
+    }
+  
+    /* Adjust validation error styling */
+    .validation-error {
+      color: red;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+  </style>
+  
