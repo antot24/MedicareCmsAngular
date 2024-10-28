@@ -17,7 +17,10 @@ import { DoctorComponent } from './doctor/doctor.component';
 import { PharmacistComponent } from './pharmacist/pharmacist.component';
 import { LabtechnicianComponent } from './labtechnician/labtechnician.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
+//import { RegisterComponent } from './register.component';
+
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';  
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -27,6 +30,7 @@ import { TodaysappointmentsModule } from '../todaysappointments/todaysappointmen
 
 
 @NgModule({
+
   declarations: [AuthComponent, AdminnavbarComponent, NavbarComponent, ReceptionistnavbarComponent, DoctornavbarComponent, LabtechniciannavbarComponent, HomeComponent, LoginComponent, AdminComponent, ReceptionistComponent, DoctorComponent, PharmacistComponent, LabtechnicianComponent, PagenotfoundComponent],
   imports: [
     CommonModule,
@@ -36,6 +40,7 @@ import { TodaysappointmentsModule } from '../todaysappointments/todaysappointmen
     NgxPaginationModule,
     FormsModule,
     TodaysappointmentsModule
+
   ]
 
 })

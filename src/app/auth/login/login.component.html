@@ -1,1 +1,127 @@
-<p>login works!</p>
+<div class="hospital-login-container">
+    <div class="login-card">
+        <h4 class="title">Welcome to Medicare Hospital</h4>
+        <p class="subtitle">Please enter your credentials to continue</p>
+        <hr class="divider">
+        <form [formGroup]="loginForm" (ngSubmit)="loginCredentials()">
+            <!-- Username -->
+            <div class="form-group">
+                <input type="text" placeholder="Enter Your Username" formControlName="Username" class="form-control">
+            </div>
+            <!-- Validation Message for Username -->
+            <div class="validation-error" *ngIf="isSubmitted && formControls.Username.errors">
+                <div *ngIf="formControls.Username.errors.required">
+                    Username is required
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <input type="password" placeholder="Enter Your Password" formControlName="Password" class="form-control">
+            </div>
+            <!-- Validation Message for Password -->
+            <div class="validation-error" *ngIf="isSubmitted && formControls.Password.errors">
+                <div *ngIf="formControls.Password.errors.required">
+                    Password is required
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn-submit">Login</button>
+            <div class="validation-error" *ngIf="error">
+                {{ error }}
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    /* Overall Container */
+.hospital-login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('https://as1.ftcdn.net/v2/jpg/08/06/31/32/1000_F_806313292_zh1dia5Q0CRvMBzAEf2wA56WfYT81Ufn.jpg'), linear-gradient(135deg, #88d3ce, #6c9bd0); /* Background image with gradient overlay */
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    padding: 20px;
+}
+
+    /* Card Style */
+    .login-card {
+        width: 100%;
+        max-width: 400px;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+        background-color: #ffffff;
+        text-align: center;
+    }
+
+    /* Title and Subtitle */
+    .title {
+        font-family: 'Arial', sans-serif;
+        font-weight: bold;
+        font-size: 1.8rem;
+        color: #007c91; /* Deep Aqua tone */
+        margin-bottom: 5px;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        color: #4f9a94; /* Soft Aqua shade */
+        margin-bottom: 20px;
+    }
+
+    /* Divider */
+    .divider {
+        width: 60px;
+        height: 4px;
+        background: #88d3ce;
+        margin: 10px auto 20px;
+        border-radius: 4px;
+    }
+
+    /* Form Control */
+    .form-control {
+        font-size: 1rem;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #b2ebf2;
+        border-radius: 5px;
+        transition: border-color 0.3s;
+    }
+
+    .form-control:focus {
+        border-color: #4dd0e1;
+        box-shadow: 0px 0px 5px rgba(77, 208, 225, 0.5);
+    }
+
+    /* Submit Button */
+    .btn-submit {
+        width: 100%;
+        padding: 12px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #ffffff;
+        background-color: #007c91;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn-submit:hover {
+        background-color: #4dd0e1;
+    }
+
+    /* Validation Error Messages */
+    .validation-error {
+        font-size: 0.9rem;
+        color: #d32f2f;
+        margin-bottom: 10px;
+        text-align: left;
+    }
+</style>

@@ -12,6 +12,8 @@ import { LabtechnicianComponent } from './labtechnician/labtechnician.component'
 import { PharmacistComponent } from './pharmacist/pharmacist.component';
 import { LabtechnicianComponent } from './labtechnician/labtechnician.component';
 import { DoctorComponent } from './doctor/doctor.component';
+
+import { RegisterComponent } from './register/register.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 
@@ -22,11 +24,17 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent},
   {path: 'receptionist', component: ReceptionistComponent},
   {path: 'doctor', component: DoctorComponent},
+
+  {path: 'pharmacist', component: PharmacistComponent},
+
+  //change1
+  {path: 'register', component: RegisterComponent},
+ 
+
   //{path: 'pharma', component: PharmacistComponent},
   {path: 'labtechnician', component: LabtechnicianComponent}
   
-
-];
+  ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

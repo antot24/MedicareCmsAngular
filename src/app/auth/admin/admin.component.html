@@ -1,3 +1,79 @@
-<!-- <p>admin works!</p> -->
-
 <app-adminnavbar></app-adminnavbar>
+
+<div class="full-page-container">
+    <div class="fixed-button-container">
+        <a [routerLink]="['/staffs/list']" role="button" class="btn-professional">
+            <span>List Staffs</span>
+        </a>
+        <a [routerLink]="['/staffs/add']" role="button" class="btn-professional">
+            <span>Add Staffs</span>
+        </a>
+    </div>
+</div>
+
+<style>
+    /* Full-page background with an image and color overlay */
+    html, body {
+        height: 100%;
+        margin: 0;
+        background-image: url('https://stock.adobe.com/in/search?k=medicare'); /* Replace with your image URL */
+        background-size: cover; /* Cover the entire background */
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Prevent repeating the image */
+        font-family: Arial, sans-serif;
+    }
+
+    .full-page-container {
+        height: 100%; /* Ensure the full page container takes full height */
+        background-color: rgba(224, 247, 250, 0.8); /* Aqua-greenish-blue with some transparency */
+    }
+
+    /* Centered, fixed-position container */
+    .fixed-button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background for contrast */
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Soft shadow */
+        border: 1px solid #0f9100;
+    }
+
+    /* Button styling */
+    .btn-professional {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 140px;
+        height: 110px;
+        background-color: #ffffff; /* Button background */
+        border: 2px solid #00911b;
+        border-radius: 8px;
+        color: #009113;
+        font-size: 1.1rem;
+        font-weight: 500;
+        text-decoration: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .btn-professional:hover {
+        background-color: #007c91;
+        color: #ffffff;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        transform: translateY(-3px);
+    }
+
+    .btn-professional span {
+        margin-top: 5px;
+    }
+</style>

@@ -36,6 +36,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
+import { StaffsComponent } from './staffs/staffs.component';
+import { DoctorsComponent } from './staffs/doctors.component';
+import { DoctorComponent } from './auth/doctor/doctor.component';
 
 // import { LabtechnicianComponent } from './labtechncian/labtechncian.component';
 
@@ -56,13 +59,43 @@ const routes: Routes = [
   },
 
 
+
+
+//check requestparam method trial --reshmi
+//{ path: 'staffs/docadd/:staffId', component: DoctorsComponent },
+
+//Authentication /Authorization
+
 // Todays Appointment Module
+
 {
   path: 'appointments',component:TodaysappointmentsComponent,
   loadChildren: () =>
     import('./todaysappointments/todaysappointments.module')
       .then(x => x.TodaysappointmentsModule)
 },
+
+
+//Staffs -- lazy loading
+{path:'staffs',component:StaffsComponent,
+  loadChildren: () => 
+   import('./staffs/staffs.module')
+    .then(x=>x.StaffsModule)
+},
+
+
+//doctors--lazy loading
+{path:'doctors',component:DoctorsComponent,
+  loadChildren: () => 
+   import('./staffs/staffs.module')
+    .then(x=>x.StaffsModule)
+},
+
+
+//register component to register user
+
+//Wild Card Route
+{path:'',redirectTo:'auth/pagenotfound', pathMatch:'full'}
 
 
 //You can add other Parent components below, like above   -- lazy loading for best performance
@@ -83,6 +116,7 @@ const routes: Routes = [
   //   .then(m =>m.LabtechnicianModule)
   // },
   
+
 ];
 
 
@@ -90,5 +124,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
+
 
