@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
+import { StaffsComponent } from './staffs/staffs.component';
+import { DoctorsComponent } from './staffs/doctors.component';
+import { DoctorComponent } from './auth/doctor/doctor.component';
 
 const routes: Routes = [
   //Empty Route
 {path:'',redirectTo:'auth/login', pathMatch:'full'},
+
+
+
+//check requestparam method trial --reshmi
+//{ path: 'staffs/docadd/:staffId', component: DoctorsComponent },
 
 //Authentication /Authorization
 {
@@ -14,11 +22,26 @@ const routes: Routes = [
       .then(x => x.AuthModule)
 },
 
-//You can add other Parent components below, like above   -- lazy loading for best performance
+//Staffs -- lazy loading
+{path:'staffs',component:StaffsComponent,
+  loadChildren: () => 
+   import('./staffs/staffs.module')
+    .then(x=>x.StaffsModule)
+},
+
+
+//doctors--lazy loading
+{path:'doctors',component:DoctorsComponent,
+  loadChildren: () => 
+   import('./staffs/staffs.module')
+    .then(x=>x.StaffsModule)
+},
+
+
+//register component to register user
 
 //Wild Card Route
-{path:'**',redirectTo:'auth/pagenotfound', pathMatch:'full'}
-
+{path:'',redirectTo:'auth/pagenotfound', pathMatch:'full'}
 ];
 
 @NgModule({

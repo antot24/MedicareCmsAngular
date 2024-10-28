@@ -1,0 +1,36 @@
+<form [formGroup]="registerForm" (ngSubmit)="registerUser()" style="max-width: 400px; margin: auto; padding: 20px; border-radius: 10px; background: #f9f9f9; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
+  <h2 style="text-align: center; color: #007c91;">Register</h2>
+  
+  <div style="margin-bottom: 15px;">
+    <label for="username" style="display: block; font-weight: bold; color: #007c91;">Username:</label>
+    <input id="username" type="text" formControlName="username" style="width: 100%; padding: 10px; border: 2px solid #b2ebf2; border-radius: 5px; transition: border-color 0.3s;" />
+    <div *ngIf="isSubmitted && formControls.username.errors" style="margin-top: 5px;">
+      <small *ngIf="formControls.username.errors?.required" style="color: red;">Username is required.</small>
+      <small *ngIf="formControls.username.errors?.minlength" style="color: red;">Username must be at least 3 characters long.</small>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <label for="password" style="display: block; font-weight: bold; color: #007c91;">Password:</label>
+    <input id="password" type="password" formControlName="password" style="width: 100%; padding: 10px; border: 2px solid #b2ebf2; border-radius: 5px; transition: border-color 0.3s;" />
+    <div *ngIf="isSubmitted && formControls.password.errors" style="margin-top: 5px;">
+      <small *ngIf="formControls.password.errors?.required" style="color: red;">Password is required.</small>
+      <small *ngIf="formControls.password.errors?.minlength" style="color: red;">Password must be at least 6 characters long.</small>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <label for="confirmPassword" style="display: block; font-weight: bold; color: #007c91;">Confirm Password:</label>
+    <input id="confirmPassword" type="password" formControlName="confirmPassword" style="width: 100%; padding: 10px; border: 2px solid #b2ebf2; border-radius: 5px; transition: border-color 0.3s;" />
+    <div *ngIf="isSubmitted && formControls.confirmPassword.errors" style="margin-top: 5px;">
+      <small *ngIf="formControls.confirmPassword.errors?.required" style="color: red;">Confirm password is required.</small>
+      <small *ngIf="!passwordsMatch()" style="color: red;">Passwords do not match.</small>
+    </div>
+  </div>
+
+  <button type="submit" style="width: 100%; padding: 10px; background-color: #007c91; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; transition: background-color 0.3s;">Register</button>
+
+  <div *ngIf="error" style="margin-top: 15px;">
+    <small style="color: red;">{{ error }}</small>
+  </div>
+</form>
