@@ -1,0 +1,71 @@
+/* Container styling */
+.medicine-list-container {
+    padding: 20px;
+    background-color: #f0f8f5; /* Light green background */
+    border-radius: 8px;
+}
+
+.header .row {
+    margin-bottom: 20px;
+}
+
+/* Search bar styling */
+.custom-margin-search {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #a3c1a8;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #c6f6d5; /* Light green header */
+    color: #2f855a; /* Darker green text */
+    font-weight: bold;
+}
+
+table td {
+    background-color: #f0f8f5; /* Light green cell background */
+}
+
+/* Action button styling */
+.btn-outline-primary, .btn-outline-secondary-custom {
+    border-color: #48bb78; /* Green border */
+    color: #2f855a; /* Dark green text */
+    transition: background-color 0.3s ease;
+}
+
+.btn-outline-primary:hover, .btn-outline-secondary-custom:hover {
+    background-color: #38a169; /* Darker green on hover */
+    color: white;
+}
+
+/* Update Medicine button styling */
+.btn-outline-info {
+    border-color: #48bb78; /* Green border */
+    color: #2f855a; /* Dark green text */
+    transition: background-color 0.3s ease;
+}
+
+.btn-outline-info:hover {
+    background-color: #38a169; /* Dark green background on hover */
+    color: white;
+}
+
+/* Footer styling */
+.footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}

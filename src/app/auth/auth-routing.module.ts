@@ -5,9 +5,10 @@ import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { ReceptionistComponent } from './receptionist/receptionist.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-import { PharmacistComponent } from './pharmacist/pharmacist.component';
+// import { PharmacistComponent } from './pharmacist/pharmacist.component';
 import { LabtechnicianComponent } from './labtechnician/labtechnician.component';
 import { DoctorComponent } from './doctor/doctor.component';
+import { PharmacistComponent } from './pharmacist/pharmacist.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},  
@@ -15,10 +16,9 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent},
   {path: 'receptionist', component: ReceptionistComponent},
   {path: 'doctor', component: DoctorComponent},
-  {path: 'pharmacist', component: PharmacistComponent},
-  {path: 'labtechnician', component: LabtechnicianComponent},
-  {path: 'pagenotfound', component: PagenotfoundComponent}
-
+  //{path: 'pharma', component: PharmacistComponent},
+  {path: 'labtechnician', component: LabtechnicianComponent}
+  
 
 ];
 

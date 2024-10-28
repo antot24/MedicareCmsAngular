@@ -1,0 +1,67 @@
+.prescription-details-container {
+    padding: 20px;
+    background-color: #f0f8f5; /* Light green background */
+    border-radius: 8px;
+  }
+  
+  h1 {
+    color: #2f855a; /* Dark green color for the heading */
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .details-section {
+    margin-bottom: 20px;
+  
+    p {
+      font-size: 1.1em;
+      color: #333;
+      margin: 5px 0;
+      line-height: 1.5;
+    }
+  
+    strong {
+      color: #2f855a; /* Dark green for labels */
+    }
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+  
+    th {
+      background-color: #c6f6d5; /* Light green header */
+      color: #2f855a;
+      font-weight: bold;
+    }
+  
+    td {
+      background-color: #f0f8f5;
+    }
+  }
+  
+  .button-section {
+    display: flex;
+    justify-content: center; /* Center the button horizontally */
+    margin-top: 20px;
+  
+    .generate-bill-btn {
+      background-color: #48bb78; /* Green button */
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+  
+      &:hover {
+        background-color: #38a169; /* Darker green on hover */
+      }
+    }
+  }
+  
