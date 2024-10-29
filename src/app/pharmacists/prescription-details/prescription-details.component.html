@@ -1,0 +1,34 @@
+<!-- prescription-details.component.html -->
+<div *ngIf="prescriptionDetails.length" class="prescription-details-container">
+    <h1 class="text-center">Prescription Details</h1>
+
+    <div class="details-section">
+        <p><strong>Patient Name:</strong> {{ prescriptionDetails[0].PatientName }}</p>
+        <p><strong>Appointment ID:</strong> {{ prescriptionDetails[0].AppointmentId }}</p>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Medicine Name</th>
+                    <th>Dosage</th>
+                    <th>Duration</th>
+                    <th>Frequency</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let medicine of prescriptionDetails[0].Medicines">
+                    <td>{{ medicine.MedicineName }}</td>
+                    <td>{{ medicine.Dosage }}</td>
+                    <td>{{ medicine.Duration }}</td>
+                    <td>{{ medicine.Frequency }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="button-section text-center">
+        <button class="btn btn-primary generate-bill-btn" (click)="generateBill()">Generate Bill</button>
+    </div>
+</div>

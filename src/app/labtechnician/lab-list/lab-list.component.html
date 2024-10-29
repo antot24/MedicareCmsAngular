@@ -1,0 +1,62 @@
+<app-lab-navbar></app-lab-navbar>
+<div class="container">
+    <div class="header">
+        <div class="row">
+            <!--Search test-->
+            <div class="col-sm-8">
+                <input type="search" class="form-control custom-margin-search" placeholder="Search Test here"
+                    [(ngModel)]="searchTerm" (input)="filterTests()">
+                <br>
+            </div>
+
+            <!--Add test-->
+            <div class="col-sm-4">
+                <a [routerLink]="['/lab/add']" role="button" class="btn btn-outline-primary custom-margin-add">
+                    <i class="fa fa-plus fa-lg"></i>&nbsp;Add Test
+                </a>
+                &nbsp; <!-- Space between buttons -->
+                <a [routerLink]="['/lab/view']" role="button"
+                    class="btn btn-outline-secondary-custom custom-margin-add">
+                    <i class="fa fa-file-alt fa-lg"></i>&nbsp;Prescription
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!--List Tests-->
+    <table class="table table-bordered table-striped">
+        <thead>
+            <th>Test Name</th>
+            <th>Test Type</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Reference Min Range</th>
+            <th>Reference Max Range</th>
+            <th>Sample Required</th>
+            <th>Created Date</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let test of filteredTests | paginate: { itemsPerPage: 5, currentPage: page }">
+                <td>{{test.TestName}}</td>
+                <td>{{test.TestType}}</td>
+                <td>{{test.Category}}</td>
+                <td>{{test.Amount | currency:'INR'}}</td>
+                <td>{{test.ReferenceMinRange}}</td>
+                <td>{{test.ReferenceMaxRange}}</td>
+                <td>{{test.SampleRequired}}</td>
+                <td>{{test.CreatedDate | date: 'yyyy-MM-dd'}}</td>
+                <td>
+                    <button type="button" class="btn btn-sm btn-outline-info" [routerLink]="['/lab/update', test]">
+                        <i class="fa fa-edit"></i>&nbsp;Update Test
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--Footer-->
+    <div class="footer">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+</div>

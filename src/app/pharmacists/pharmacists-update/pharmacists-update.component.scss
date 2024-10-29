@@ -1,0 +1,86 @@
+/* Container styling */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #e8f5e9; /* Light green background */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    text-align: center;
+    color: #2e7d32; /* Dark green text for heading */
+    margin-bottom: 20px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #a5d6a7; /* Light green divider */
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #388e3c; /* Medium green color for labels */
+}
+
+.form-control {
+    height: calc(2.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border: 1px solid #c8e6c9; /* Green border */
+    border-radius: 4px;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+/* Focused form control */
+.form-control:focus {
+    border-color: #66bb6a; /* Bright green border on focus */
+    box-shadow: 0 0 0 .2rem rgba(102, 187, 106, .25); /* Green shadow */
+}
+
+/* Button styling */
+.btn-primary {
+    background-color: #43a047; /* Green button */
+    color: white;
+    border: none;
+    padding: .75rem;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #2e7d32; /* Dark green on hover */
+}
+
+/* Validation styling */
+.is-invalid {
+    border-color: #d32f2f; /* Red border for invalid input */
+    background-color: #ffebee; /* Light red background for invalid input */
+}
+
+.validation-error {
+    color: #d32f2f; /* Red text for validation error messages */
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.validation-error div {
+    display: flex;
+    align-items: center;
+}
+
+.validation-error div::before {
+    content: "⚠️ ";
+    margin-right: 5px;
+    font-size: 1rem;
+}

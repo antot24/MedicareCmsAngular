@@ -1,0 +1,151 @@
+<div class="container-fluid" style="background-color: rgba(224, 247, 250, 0.9);">
+    <div class="header text-center mb-4">
+        <h2 class="page-title">Staff Management</h2>
+        <div class="row mb-3">
+            <!-- Search Staff -->
+            <div class="col-md-8">
+                <input type="search" class="form-control custom-margin-search" placeholder="Search Staff here"
+                    [(ngModel)]="searchTerm" (input)="filterStaffs()">
+            </div>
+            <div class="col-md-4">
+                <a [routerLink]="['/staffs/add']" role="button" class="btn btn-primary custom-margin-add">
+                    <i class="fa fa-user-plus fa-lg"></i>&nbsp;Add Staff
+                </a>
+                <a href="auth/login" target="_self"><button class="btn btn-outline-info">Logout</button></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- List Staff Members -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>Date of Birth</th>
+                    <th>Blood Group</th>
+                    <th>Joining Date</th>
+                    <th>Salary</th>
+                    <th>Experience</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Qualification</th>
+                    <th>Address</th>
+                    <th>Active</th>
+                    <th>Department ID</th>
+                    <th>Role ID</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let staff of filteredStaffs | paginate: { itemsPerPage: 3, currentPage: page }">
+                    <td>{{ staff.StaffId }}</td>
+                    <td>{{ staff.FirstName }}</td>
+                    <td>{{ staff.LastName }}</td>
+                    <td>{{ staff.Gender }}</td>
+                    <td>{{ staff.DateOfBirth | date }}</td>
+                    <td>{{ staff.BloodGroup }}</td>
+                    <td>{{ staff.JoiningDate | date }}</td>
+                    <td>{{ staff.Salary | currency }}</td>
+                    <td>{{ staff.Experience }}</td>
+                    <td>{{ staff.PhoneNumber }}</td>
+                    <td>{{ staff.Email }}</td>
+                    <td>{{ staff.Qualification }}</td>
+                    <td>{{ staff.Address }}</td>
+                    <td>
+                        <input type="checkbox" [checked]="staff.isActive" disabled>
+                    </td>
+                    <td>{{ staff.DepartmentId }}</td>
+                    <td>{{ staff.RoleId }}</td>
+                    <!-- Action Buttons -->
+                    <td>
+                        <button type="button" class="btn btn-outline-info btn-sm" (click)="editStaff(staff)">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        &nbsp;
+                        <button type="button" class="btn btn-outline-success btn-sm" 
+                            [disabled]="staff.RoleId !== 3"
+                            (click)="addDoctor(staff)">
+                            Manage Doctor
+                        </button>
+                        &nbsp;
+
+                        <a [routerLink]="['/auth/register']" role="button" class="btn">
+                            <i class="fa fa-user-plus fa-lg"></i>&nbsp;Register
+                        </a>
+
+
+
+
+                        <!-- <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteStaff(staff.StaffId)">
+                            <i class="fa fa-trash"></i>
+                        </button> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="footer text-right">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa; /* Light background for better contrast */
+    }
+
+    .page-title {
+        color: #007c91; /* Aqua greenish blue color for the title */
+        font-weight: bold;
+    }
+
+    .custom-margin-search {
+        margin-bottom: 10px; /* Add some margin for spacing */
+    }
+
+    .custom-margin-add {
+        margin-left: 10px; /* Add some margin for spacing */
+    }
+
+    .table {
+        background-color: #ffffff; /* White background for the table */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    }
+
+    .table th {
+        background-color: #e3f2fd; /* Light aqua blue for the header */
+        color: #007c91; /* Darker aqua for the header text */
+        font-weight: bold;
+    }
+
+    .table tbody tr:hover {
+        background-color: #e0f7fa; /* Light hover effect */
+    }
+
+    .btn-primary {
+        background-color: #007c91; /* Aqua greenish blue */
+        border-color: #007c91; /* Border matches the background */
+    }
+
+    .btn-outline-info, .btn-outline-success, .btn-outline-danger {
+        color: #007c91; /* Color for outlined buttons */
+        border-color: #007c91; /* Border color for outlined buttons */
+    }
+
+    .btn-outline-info:hover, .btn-outline-success:hover, .btn-outline-danger:hover {
+        background-color: #007c91; /* Change background on hover */
+        color: white; /* White text on hover */
+    }
+
+    .footer {
+        padding: 20px 0; /* Add padding for better spacing */
+    }
+</style>

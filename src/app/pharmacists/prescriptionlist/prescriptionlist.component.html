@@ -1,0 +1,54 @@
+<div class="container">
+    <!-- Medicine Prescriptions Heading -->
+    <h1 class="page-heading">Medicine Prescriptions</h1>
+
+    <div class="header">
+        <div class="row">
+            <!-- Search Prescription -->
+            <div class="col-sm-8">
+                <input type="search" 
+                       class="form-control custom-margin-search" 
+                       placeholder="Search Text here"
+                       [(ngModel)]="searchTerm"
+                       (input)="filterPrescription()">
+            </div>
+        </div>
+    </div>
+
+    <!-- Adding margin to create space between the search bar and the list -->
+    <div style="margin-top: 20px;"></div>
+
+    <!-- List Prescription -->
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Appointment ID</th>
+                <th>Patient Name</th>
+                <th>Medicine Dispense Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let prescription of filteredPrescriptions | paginate: { itemsPerPage: 5, currentPage: page }">
+                <td>{{ prescription.AppointmentId }}</td>
+                <td>{{ prescription.PatientName }}</td>
+                <td>{{ prescription.MedicineDispenseStatus }}</td>
+                <td>
+                    <a [routerLink]="['/pharmacist/prescriptiondetails', prescription.AppointmentId]" class="btn btn-lg btn-primary-control">
+                        Details
+                    </a>
+                    
+                    
+                    
+                    
+                  
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Footer -->
+    <div class="footer">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+</div>

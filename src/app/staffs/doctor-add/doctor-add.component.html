@@ -1,0 +1,151 @@
+<div class="container">
+  <h3> New Doctor Info</h3>
+  <hr>
+
+  <form name="frmDoctor" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+    <!-- DoctorId (Auto-generated, readonly) -->
+    <div class="form-group">
+      <label>DoctorId</label>
+      <input type="text" readonly name="DoctorId" class="form-control" [(ngModel)]="adminService.doctor.DoctorId">
+    </div>
+
+
+
+    <!-- Consultation Fee -->
+    <div class="form-group">
+      <label>Consultation Fee</label>
+      <input type="number" name="ConsultationFee" #ConsultationFee="ngModel" class="form-control"
+        [(ngModel)]="adminService.doctor.ConsultationFee" required min="0"
+        [ngClass]="{'is-invalid': ConsultationFee.touched && ConsultationFee.invalid}" />
+      <!-- Validation Error Message -->
+      <div class="validation-error" *ngIf="ConsultationFee.touched && ConsultationFee.invalid">
+        <div *ngIf="ConsultationFee.errors?.required">
+          Consultation Fee is required!
+        </div>
+        <div *ngIf="ConsultationFee.errors?.min">
+          Consultation Fee cannot be negative.
+        </div>
+      </div>
+    </div>
+
+    <!-- StaffId -->
+    <div class="form-group">
+      <label>StaffId</label>
+      <input type="number" name="StaffId" #StaffId="ngModel" class="form-control"
+        [(ngModel)]="adminService.doctor.StaffId" required
+        [ngClass]="{'is-invalid': StaffId.touched && StaffId.invalid}" />
+      <!-- Validation Error Message -->
+      <div class="validation-error" *ngIf="StaffId.touched && StaffId.invalid">
+        <div *ngIf="StaffId.errors?.required">
+          StaffId is required!
+        </div>
+      </div>
+    </div>
+
+    <!-- Specialization -->
+    <div class="form-group">
+      <label>Specialization</label>
+      <select name="SpecializationId" id="SpecializationId" #SpecializationId="ngModel" class="form-control"
+        [(ngModel)]="adminService.doctor.SpecializationId" required>
+        <option value="0" disabled selected>---Select Specialization---</option>
+        <option *ngFor="let specialization of adminService.specializations" [value]="specialization.SpecializationId">
+          {{specialization.SpecializationName}}</option>
+      </select>
+      <!-- Validation Error Message -->
+      <div class="validation-error" *ngIf="SpecializationId.touched && SpecializationId.invalid">
+        <div *ngIf="SpecializationId.errors?.required">
+          Specialization is required!
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Submit Button -->
+    <div class="form-group">
+      <button type="submit" class="btn btn-lg btn-primary form-control"
+        [disabled]="!(form.valid && form.dirty)">INSERT</button>
+    </div>
+    <!-- Back Button -->
+    <div class="form-group">
+      <button type="button" class="btn btn-outline-info" (click)="goBack()">BACK</button>
+  </div>
+  </form>
+</div>
+
+<style lang="scss">
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #9cdedb;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #343a40;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #495057;
+  }
+
+  .form-control {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 10px;
+    transition: border-color 0.2s ease-in-out;
+  }
+
+  .form-control:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(12, 156, 185, 0.5);
+  }
+
+  .validation-error {
+    color: #dc3545;
+    font-size: 0.875em;
+    margin-top: 5px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background-color: #08516d;
+    border-color: #45b9eb;
+  }
+
+  .btn-outline-info {
+    border-color: #17a2b8;
+    color: #17a2b8;
+  }
+
+  .btn-outline-info:hover {
+    background-color: #17a2b8;
+    color: #a4ebf9;
+  }
+
+  .is-invalid {
+    border-color: #dc3545;
+  }
+</style>
