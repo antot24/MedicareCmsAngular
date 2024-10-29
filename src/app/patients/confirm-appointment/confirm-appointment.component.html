@@ -1,0 +1,26 @@
+<p>confirm-appointment works!</p>
+<div class="container">
+    <h3>Appointment Confirmation</h3>
+    <hr>
+    
+    <!-- Appointment Details -->
+    <div class="form-group">
+        <label>Patient Id:</label>
+        <p>{{ appointment.PatientId }}</p>
+    </div>
+    <div class="form-group">
+        <label>Specialization:</label>
+        <p>{{ appointment.SpecializationName }}</p>
+    </div>
+    <div class="form-group">
+        <label>Doctor:</label>
+        <p>{{ appointment.DoctorName }}</p>
+    </div>
+    <div class="form-group">
+        <label>Appointment Date:</label>
+        <p>{{ appointment.AppointmentDate }}</p>
+    </div>
+
+    <!-- Print Button -->
+    <button class="btn btn-lg btn-primary form-control" (click)="printPage()">Print</button>
+</div>

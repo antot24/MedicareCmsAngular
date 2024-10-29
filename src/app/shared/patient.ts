@@ -1,5 +1,14 @@
 export class Patient {
     
+// <<<<<<< Receptionist
+
+   
+//     Address:string; 
+   
+//     Email:string;
+   
+// }
+// =======
         PatientId: number = 0;
         PatientName: string;
         Dob: Date=new Date;

@@ -20,9 +20,7 @@ export class Staff {
 
     //Foreign Key
     Role:Role=new Role();
-
-
     
     
   }
-  
+

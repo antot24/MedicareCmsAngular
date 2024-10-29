@@ -3,6 +3,22 @@ import { Patient } from "./patient";
 
 export class Appointment {
 
+// <<<<<<< Receptionist
+//     AppointmentId:number=0;
+
+//     PatientId:number;
+   
+//     DoctorId:number=0;
+   
+//     AppointmentDate:Date;
+   
+//     TokenNumber:number=0;
+   
+//     ConsultationStatus:boolean=false;
+
+//     patient? = Patient;
+//     doctor? = Doctor;
+  
     AppointmentId: number = 0;
     PatientId: number = 0;
     DoctorId: number = 0;
@@ -19,4 +35,5 @@ export class Appointment {
     constructor() {
         // Optional constructor logic can be added here
     }
+
 }

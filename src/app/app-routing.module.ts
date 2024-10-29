@@ -36,6 +36,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
+import { PatientsComponent } from './patients/patients.component';
 import { StaffsComponent } from './staffs/staffs.component';
 import { DoctorsComponent } from './staffs/doctors.component';
 import { DoctorComponent } from './auth/doctor/doctor.component';
@@ -64,17 +65,26 @@ const routes: Routes = [
 //check requestparam method trial --reshmi
 //{ path: 'staffs/docadd/:staffId', component: DoctorsComponent },
 
+
 //Authentication /Authorization
 
 // Todays Appointment Module
 
-{
+  {
   path: 'appointments',component:TodaysappointmentsComponent,
   loadChildren: () =>
     import('./todaysappointments/todaysappointments.module')
       .then(x => x.TodaysappointmentsModule)
-},
 
+},
+//Patient List
+  {
+
+  path: 'patients', component: PatientsComponent, 
+  loadChildren: () =>
+    import('./patients/patients.module')
+      .then(x => x.PatientsModule)
+},
 
 //Staffs -- lazy loading
 {path:'staffs',component:StaffsComponent,
