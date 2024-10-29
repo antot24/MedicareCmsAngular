@@ -1,81 +1,68 @@
-<div class="container">
-    <h3>New Patient Info</h3>
-    <hr>
-    <form name="frmPatient" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+<div class="container-fluid" style="max-width: 600px; padding: 20px; margin: 0 auto;">
+  <h3 class="text-center">Booking Patient Info</h3>
+  <hr>
+  <form name="frmPatient" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)" style="width: 100%;">
       
       <!-- Patient Id -->
       <div class="form-group">
-        <label>Patient Id</label>
-        <input type="text" readonly name="PatientId" class="form-control"
-               [(ngModel)]="receptionistservice.appointmentViewModel.PatientId">
+          <label>Patient Id</label>
+          <input type="text" readonly name="PatientId" class="form-control"
+                 [(ngModel)]="receptionistservice.appointmentViewModel.PatientId">
       </div>
-  
+
       <!-- Specialization Selection -->
       <div class="form-group">
-        <label>Specialization:</label>
-        <select name="SpecializationId" id="SpecializationId" #SpecializationId="ngModel" class="form-control"
-                [(ngModel)]="receptionistservice.special.SpecializationId"
-                (change)="onSpecializationChange($event)" required>
-          <option value="0" selected disabled>---Select Specialization---</option>
-          <option *ngFor="let value of receptionistservice.specials" [value]="value.SpecializationId">
-            {{ value.SpecializationName }}
-          </option>
-        </select>
-        <div class="validation-error" *ngIf="SpecializationId.touched && SpecializationId.invalid">
-          <div *ngIf="SpecializationId.errors?.required">Specialization is required!</div>
-        </div>
+          <label>Specialization:</label>
+          <select name="SpecializationId" id="SpecializationId" #SpecializationId="ngModel" class="form-control"
+                  [(ngModel)]="receptionistservice.special.SpecializationId"
+                  (change)="onSpecializationChange($event)" required>
+              <option value="0" selected disabled>---Select Specialization---</option>
+              <option *ngFor="let value of receptionistservice.specials" [value]="value.SpecializationId">
+                  {{ value.SpecializationName }}
+              </option>
+          </select>
+          <div class="validation-error" *ngIf="SpecializationId.touched && SpecializationId.invalid">
+              <div *ngIf="SpecializationId.errors?.required">Specialization is required!</div>
+          </div>
       </div>
-  
+
       <!-- Doctor Selection -->
       <div class="form-group">
-        <label>Doctor:</label>
-        <select name="DoctorId" id="DoctorId" #DoctorId="ngModel" class="form-control"
-                [(ngModel)]="receptionistservice.appointmentViewModel.DoctorId" required>
-          <option value="0" selected disabled>---Select Doctor---</option>
-          <option *ngFor="let value of receptionistservice.doctors" [value]="value.DoctorId">
-            {{ value.Staff.FirstName }} {{ value.Staff.LastName }}
-          </option>
-        </select>
-        <div class="validation-error" *ngIf="DoctorId.touched && DoctorId.invalid">
-          <div *ngIf="DoctorId.errors?.required">Doctor is required!</div>
-        </div>
+          <label>Doctor:</label>
+          <select name="DoctorId" id="DoctorId" #DoctorId="ngModel" class="form-control"
+                  [(ngModel)]="receptionistservice.appointmentViewModel.DoctorId" required>
+              <option value="0" selected disabled>---Select Doctor---</option>
+              <option *ngFor="let value of receptionistservice.doctors" [value]="value.DoctorId">
+                  {{ value.Staff.FirstName }} {{ value.Staff.LastName }}
+              </option>
+          </select>
+          <div class="validation-error" *ngIf="DoctorId.touched && DoctorId.invalid">
+              <div *ngIf="DoctorId.errors?.required">Doctor is required!</div>
+          </div>
       </div>
-  
+
       <div class="form-group">
-        <label>Appointment Date and Time:</label>
-        <input type="date" name="AppointmentDate" #AppointmentDate="ngModel" class="form-control"
-            [(ngModel)]="receptionistservice.appointmentViewModel.AppointmentDate" required
-            [ngClass]="{'is-invalid': AppointmentDate.touched && AppointmentDate.invalid}">
-        <!-- Validation Error Message -->
-        <div class="validation-error" *ngIf="AppointmentDate.touched && AppointmentDate.invalid">
-            <div *ngIf="AppointmentDate.errors?.required">
-                Appointment Date and Time is required!
-            </div>
-        </div>
-    </div>
+          <label>Appointment Date:</label>
+          <input type="date" name="AppointmentDate" #AppointmentDate="ngModel" class="form-control"
+                 [value]="today"  
+                 [(ngModel)]="receptionistservice.appointmentViewModel.AppointmentDate" required
+                 [ngClass]="{'is-invalid': AppointmentDate.touched && AppointmentDate.invalid}"
+                 [disabled]="true"> <!-- Disable the date picker -->
+          <!-- Validation Error Message -->
+          <div class="validation-error" *ngIf="AppointmentDate.touched && AppointmentDate.invalid">
+              <div *ngIf="AppointmentDate.errors?.required">Appointment Date is required!</div>
+          </div>
+      </div>
 
-
-    
       <!-- Submit Button -->
-      <!-- <div class="form-group">
-        <button type="submit" class="btn btn-lg btn-primary form-control" [disabled]="form.invalid">
-          Book Appointment
-        </button>
-      </div> -->
-      
-<!-- Book Appointment Button with Router Link -->
-<div class="form-group">
-  <button
-    type="submit"
-    class="btn btn-lg btn-primary form-control"
-    [disabled]="form.invalid"
-    [routerLink]="['/patients/confirm-appointment']"
-  >
-    Book Appointment
-  </button>
+      <div class="form-group">
+          <button
+              type="submit"
+              class="btn btn-lg btn-primary form-control"
+              [disabled]="form.invalid"
+              [routerLink]="['/patients/confirm-appointment']">
+              Book Appointment
+          </button>
+      </div>
+  </form>
 </div>
-
-
-    </form>
-  </div>
-  

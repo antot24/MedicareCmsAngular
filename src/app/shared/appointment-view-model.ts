@@ -8,4 +8,5 @@ export class AppointmentViewModel {
     TokenNumber: number;
     ConsultationStatus: boolean= false;
 
+    
 }

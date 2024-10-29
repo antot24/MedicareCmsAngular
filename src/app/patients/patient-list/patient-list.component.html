@@ -1,49 +1,40 @@
-<div class="container">
+<div class="container-fluid" style="padding: 20px;">
     <div class="header">
-    <div class="row">
+        <div class="row align-items-center">
+            <!-- Search Patient -->
+            <div class="col-sm-8">
+                <input type="search" class="form-control custom-margin-search"
+                       placeholder="Search Patient " [(ngModel)]="searchTerm"
+                       (input)="filterPatients()">
+            </div>
 
-
-          <!--Search Patient-->
-        <div class="col-sm-8">
-            <input type="search" class="form-control custom-margin-search"
-             placeholder="Search Patient " [(ngModel)]="searchTerm"
-             (input)="filterPatients()">
+            <!-- Add Patient -->
+            <div class="col-sm-4 d-flex justify-content-end">
+                <a [routerLink]="['/patients/add']" role="button" class="btn btn-outline-primary custom-margin-add">
+                    <i class="fa fa-user-plus fa-lg"></i>&nbsp;Add Patient
+                </a>
+            </div>
         </div>
-
-
-          <!--Add Patient-->
-          <div class="col-sm-4">
-           <a [routerLink]="['/patients/add']" role="button" class="btn btn-outline-primary custom-margin-add">
-            <i class="fa fa-user-plus fa-lg"></i>&nbsp;Add Patient</a>
+        <br>
     </div>
-</div>
-<br>
 
-</div>
-
-
-
-
-      <!--List Patient-->
-      <table class="table table-bordered table-striped">
+    <!-- List Patient -->
+    <table class="table table-bordered table-striped" style="width: 100%;">
         <thead>
-            <th>Patient ID</th>
-            <th>Patient Name</th>
-            <th>DOB</th>
-            <th>Gender</th>
-            <th>Blood Group</th>
-            <th>Phone Number</th>
-            <th>Address</th>
-            <th>Email</th>
-            <th> Action </th>
-
-
+            <tr>
+                <th style="width: 150px;">Patient ID</th>
+                <th style="width: 250px;">Patient Name</th>
+                <th style="width: 150px;">DOB</th>
+                <th style="width: 100px;">Gender</th>
+                <th style="width: 150px;">Blood Group</th>
+                <th style="width: 150px;">Phone Number</th>
+                <th style="width: 250px;">Address</th>
+                <th style="width: 250px;">Email</th>
+                <th style="width: 150px;">Action</th>
+            </tr>
         </thead>
         <tbody>
-            <!-- <tr *ngFor="let patient of patientService.patients | filter:searchTerm 
-            |  paginate: { itemsPerPage: 3, currentPage: page }"> -->
-            <tr *ngFor="let patient of filteredPatients ">
-
+            <tr *ngFor="let patient of filteredPatients">
                 <td>{{patient.PatientId}}</td>
                 <td>{{patient.PatientName}}</td>
                 <td>{{patient.Dob}}</td>
@@ -52,29 +43,22 @@
                 <td>{{patient.PhoneNumber}}</td>
                 <td>{{patient.Address}}</td>
                 <td>{{patient.Email}}</td>
-
-
-
-
                 <td>
                     <button type="button" class="btn btn-sm btn-outline-info"
-                        (click)="editPatient(patient)">
+                            (click)="editPatient(patient)">
                         <i class="fa fa-edit"></i>
                     </button>
                     &nbsp;
                     <button type="button" class="btn btn-sm btn-outline-primary"
-                        (click)="bookAppointment(patient.PatientId)">
+                            (click)="bookAppointment(patient.PatientId)">
                         <i class="fa fa-calendar"></i>                   
                     </button>
-
                 </td>
-
             </tr>
         </tbody>
+    </table>
 
-      </table>
-
-     <!-- <div align="right" class="footer">
+    <!-- <div align="right" class="footer">
         <pagination-controls (pageChange)="page = $event"></pagination-controls>
-     </div> -->
+    </div> -->
 </div>

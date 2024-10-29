@@ -13,6 +13,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BookAppointmentComponent implements OnInit {
   patientId: number = 0; // Store patient ID
+  today: string; // Variable to hold today's date in 'YYYY-MM-DD' format
+
+  
    
 
 
@@ -32,9 +35,24 @@ export class BookAppointmentComponent implements OnInit {
       this.patientId = +params.get('id')!; 
       this.receptionistservice.appointmentViewModel.PatientId = this.patientId; // Store in the appointment view model
     });
+
+     // Set today's date in 'YYYY-MM-DD' format for the input
+     const todayDate = new Date();
+     this.today = todayDate.toISOString().split('T')[0]; // Format to 'YYYY-MM-DD'
+
+     // Set the current appointment date
+     this.setCurrentAppointmentDate();
     
     this.receptionistservice.getAllSpecialization();
   }
+
+  // Set the current date for AppointmentDate
+  setCurrentAppointmentDate() {
+    const today = new Date(); // This creates a Date object representing the current date
+    this.receptionistservice.appointmentViewModel.AppointmentDate = today; // Assign the Date object directly
+}
+
+
 
 
    // Called when the specialization is changed
